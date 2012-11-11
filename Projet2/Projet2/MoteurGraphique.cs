@@ -20,7 +20,7 @@ namespace Projet2
 
         InterfaceUtilisateur _interfaceUtilisateur;
 
-        Sprite _personnage1;
+        SpriteAnime _personnage1;
 
         public MoteurGraphique()
         {
@@ -32,7 +32,7 @@ namespace Projet2
             _carte = new Carte(_carteTableau, 5, 5, 64, 64, 32, 16);
             this._moteurJeu = _moteurJeu;
 
-            _personnage1 = new Sprite(_moteurJeu.Personnage1.Position);
+            _personnage1 = new SpriteAnime(_moteurJeu.Personnage1.Position, 2, 4, 100);
         }
 
 
@@ -45,13 +45,13 @@ namespace Projet2
 
         public void Update(GameTime _gameTime)
         {
-            _personnage1.Update(_moteurJeu.Personnage1.Position);
+            _personnage1.Update(_moteurJeu.Personnage1.Position, _moteurJeu.Personnage1.Orientation, _moteurJeu.Personnage1.IsMouving, _gameTime);
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
             _carte.Draw(_spriteBatch);
-            _personnage1.Draw(_spriteBatch, new Rectangle(32, 0, 32, 32));
+            _personnage1.Draw(_spriteBatch);
         }
 
 

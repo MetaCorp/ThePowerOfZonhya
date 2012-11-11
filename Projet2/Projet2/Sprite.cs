@@ -14,8 +14,10 @@ namespace Projet2
     class Sprite
     {
         Texture2D _texture;
+        public Texture2D Texture { get { return _texture; } set { _texture = value; } }
 
         Color _color;
+        public Color Color { get { return _color; } set { _color = value; } }
 
         Vector2 _position;
         public Vector2 Position { get { return _position; } set { _position = value; } }
