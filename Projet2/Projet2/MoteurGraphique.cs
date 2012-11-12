@@ -29,7 +29,7 @@ namespace Projet2
 
         public void Initialize(Char[,] _carteTableau, MoteurJeu _moteurJeu)
         {
-            _carte = new Carte(_carteTableau, 5, 5, 64, 64, 32, 16);
+            _carte = new Carte(_carteTableau, 30, 30, 64, 64, 32, 16);
             this._moteurJeu = _moteurJeu;
 
             _personnage1 = new SpriteAnime(_moteurJeu.Personnage1.Position, 2, 4, 100);

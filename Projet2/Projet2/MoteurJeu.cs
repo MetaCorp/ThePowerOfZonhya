@@ -31,7 +31,7 @@ namespace Projet2
 
         public void Update(GameTime _gameTime)
         {
-            _personnage1.BougerPersonnage(_evenementUtilisateur.MouseState);
+            _personnage1.BougerPersonnage(_evenementUtilisateur.MouseState, _gameTime);
         }
     }
 }

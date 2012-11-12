@@ -17,6 +17,8 @@ namespace Projet2
         int _vieTotale, _vieActuelle;
         int _pointAction, _pointMouvement;
 
+        float _vitesseX, _vitesseY;
+
         int _orientation; // dans le sens trigo en partant de 0 jusqu'a 7
         public int Orientation { get { return _orientation; } set { _orientation = value; } }
 
@@ -44,16 +46,20 @@ namespace Projet2
             _position = new Vector2(10, 10);
             _nextPosition = _position;
 
-            _direction = Vector2.Normalize(new Vector2(2, 1));
+            _direction = Vector2.Normalize(new Vector2(3, 1));
+
+            _vitesseX = 0.05f;
+            _vitesseY = 2 * _vitesseX;
 
             _orientation = 6;
         }
 
         public void update(GameTime _gameTime)
         {
+
         }
 
-        public void BougerPersonnage(MouseState _mouseState)
+        public void BougerPersonnage(MouseState _mouseState, GameTime _gameTime)
         {
             _isMouving = false;
 
@@ -70,9 +76,9 @@ namespace Projet2
                 if (Math.Abs(_nextPosition.X - _position.X) > 2)
                 {
                     if (_nextPosition.X > _position.X + 1)
-                        _direction.X = 2;
+                        _direction.X = 3;
                     else if (_nextPosition.X < _position.X - 1)
-                        _direction.X = -2;
+                        _direction.X = -3;
                 }
                 else
                 {
@@ -95,27 +101,26 @@ namespace Projet2
 
                 Console.WriteLine(_direction);
 
-                _position += _direction;
+                _position.X += _direction.X * _vitesseX * (float)_gameTime.ElapsedGameTime.TotalMilliseconds;
+                _position.Y += _direction.Y * _vitesseY * (float)_gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 
-            if (_direction.Equals(new Vector2(2, 0)))
+            if (_direction.Equals(new Vector2(3, 0)))
                 _orientation = 0;
-            else if (_direction.Equals(new Vector2(2, -1)))
+            else if (_direction.Equals(new Vector2(3, -1)))
                 _orientation = 1;
             else if (_direction.Equals(new Vector2(0, -1)))
                 _orientation = 2;
-            else if (_direction.Equals(new Vector2(-2, -1)))
+            else if (_direction.Equals(new Vector2(-3, -1)))
                 _orientation = 3;
-            else if (_direction.Equals(new Vector2(-2, 0)))
+            else if (_direction.Equals(new Vector2(-3, 0)))
                 _orientation = 4;
-            else if (_direction.Equals(new Vector2(-2, 1)))
+            else if (_direction.Equals(new Vector2(-3, 1)))
                 _orientation = 5;
             else if (_direction.Equals(new Vector2(0, 1)))
                 _orientation = 6;
-            else if (_direction.Equals(new Vector2(2, 1)))
+            else if (_direction.Equals(new Vector2(3, 1)))
                 _orientation = 7;
-
-            Console.WriteLine(_orientation);
         }
     }
 }
