@@ -46,10 +46,10 @@ namespace Projet2
             _position = new Vector2(10, 10);
             _nextPosition = _position;
 
-            _direction = Vector2.Normalize(new Vector2(3, 1));
+            _direction = Vector2.Normalize(new Vector2(2, 1));
 
             _vitesseX = 0.05f;
-            _vitesseY = 2 * _vitesseX;
+            _vitesseY = 1 * _vitesseX;
 
             _orientation = 6;
         }
@@ -76,9 +76,9 @@ namespace Projet2
                 if (Math.Abs(_nextPosition.X - _position.X) > 2)
                 {
                     if (_nextPosition.X > _position.X + 1)
-                        _direction.X = 3;
+                        _direction.X = 2;
                     else if (_nextPosition.X < _position.X - 1)
-                        _direction.X = -3;
+                        _direction.X = -2;
                 }
                 else
                 {
@@ -92,6 +92,11 @@ namespace Projet2
                         _direction.Y = 1;
                     else if (_nextPosition.Y < _position.Y)
                         _direction.Y = -1;
+
+                    if ((_nextPosition.Y > _position.Y) && (_nextPosition.X == _position.X))
+                        _direction.Y = 2;
+                    else if ((_nextPosition.Y < _position.Y) && (_nextPosition.X == _position.X))
+                        _direction.Y = -2;
                 }
                 else
                 {
@@ -105,21 +110,21 @@ namespace Projet2
                 _position.Y += _direction.Y * _vitesseY * (float)_gameTime.ElapsedGameTime.TotalMilliseconds;
             }
 
-            if (_direction.Equals(new Vector2(3, 0)))
+            if (_direction.Equals(new Vector2(2, 0)))
                 _orientation = 0;
-            else if (_direction.Equals(new Vector2(3, -1)))
+            else if (_direction.Equals(new Vector2(2, -1)))
                 _orientation = 1;
-            else if (_direction.Equals(new Vector2(0, -1)))
+            else if ((_direction.Equals(new Vector2(0, -1)))  || (_direction.Equals(new Vector2(0, -2))))
                 _orientation = 2;
-            else if (_direction.Equals(new Vector2(-3, -1)))
+            else if (_direction.Equals(new Vector2(-2, -1)))
                 _orientation = 3;
-            else if (_direction.Equals(new Vector2(-3, 0)))
+            else if (_direction.Equals(new Vector2(-2, 0)))
                 _orientation = 4;
-            else if (_direction.Equals(new Vector2(-3, 1)))
+            else if (_direction.Equals(new Vector2(-2, 1)))
                 _orientation = 5;
-            else if (_direction.Equals(new Vector2(0, 1)))
+            else if ((_direction.Equals(new Vector2(0, 1)))  || (_direction.Equals(new Vector2(0, 2))))
                 _orientation = 6;
-            else if (_direction.Equals(new Vector2(3, 1)))
+            else if (_direction.Equals(new Vector2(2, 1)))
                 _orientation = 7;
         }
     }
