@@ -14,9 +14,10 @@ namespace Projet2
     class MoteurGraphique
     {
         MoteurJeu _moteurJeu;
+        MoteurPhysique _moteurPhysique;
 
-        Carte _carte;
-        public Carte Carte { get { return _carte; } set { _carte = value; } }
+        SpriteCarte _spriteCarte;
+        public SpriteCarte SpriteCarte { get { return _spriteCarte; } set { _spriteCarte = value; } }
 
         InterfaceUtilisateur _interfaceUtilisateur;
 
@@ -27,9 +28,9 @@ namespace Projet2
             _interfaceUtilisateur = new InterfaceUtilisateur();
         }
 
-        public void Initialize(Char[,] _carteTableau, MoteurJeu _moteurJeu)
+        public void Initialize(MoteurJeu _moteurJeu)
         {
-            _carte = new Carte(_carteTableau, 30, 30, 64, 64, 32, 16);
+            _spriteCarte = new SpriteCarte(_moteurJeu.Carte);
             this._moteurJeu = _moteurJeu;
 
             _personnage1 = new SpriteAnime(_moteurJeu.Personnage1.Position, 2, 4, 100);
@@ -39,7 +40,7 @@ namespace Projet2
 
         public void LoadContent(ContentManager _content)
         {
-            _carte.LoadContent(_content, "TileSetIso");
+            _spriteCarte.LoadContent(_content, "TileSetIso","hilight");
             _personnage1.LoadContent(_content, "brasegali");
         }
 
@@ -50,7 +51,7 @@ namespace Projet2
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _carte.Draw(_spriteBatch);
+            _spriteCarte.Draw(_spriteBatch);
             _personnage1.Draw(_spriteBatch);
         }
 

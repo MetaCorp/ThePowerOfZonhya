@@ -13,25 +13,32 @@ namespace Projet2
 {
     class MoteurJeu
     {
-        EvenementUtilisateur _evenementUtilisateur;
+        MoteurSysteme _moteurSysteme;
+
+        MoteurPhysique _moteurPhysique;
+
+        Carte _carte;
+        public Carte Carte { get { return _carte; } set { _carte = value; } }
 
         Personnage _personnage1;
         public Personnage Personnage1 { get { return _personnage1; } set { _personnage1 = value; } }
 
         public MoteurJeu()
         {
-            _personnage1 = new Personnage("Meta", 100, 90, 6, 3);
         }
 
-        public void Initialize(EvenementUtilisateur _evenementUtilisateur)
+        public void Initialize(MoteurSysteme _moteurSysteme, MoteurPhysique _moteurPhysique)
         {
-            Console.WriteLine("personnage initialisé : " + _personnage1.Position);
-            this._evenementUtilisateur = _evenementUtilisateur;
+            this._moteurSysteme = _moteurSysteme;
+            this._moteurPhysique = _moteurPhysique;
+
+            _personnage1 = new Personnage("Meta", 100, 90, 6, 3);
+            _carte = new Carte(_moteurSysteme.lireCarte(Environment.CurrentDirectory + @"\carte.txt"), 30, 30, 64, 64, 32, 16);
         }
 
         public void Update(GameTime _gameTime)
         {
-            _personnage1.BougerPersonnage(_evenementUtilisateur.MouseState, _gameTime);
+            _personnage1.BougerPersonnage(_moteurSysteme.EvenementUtilisateur.MouseState, _gameTime);
         }
     }
 }

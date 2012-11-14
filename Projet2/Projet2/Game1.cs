@@ -23,6 +23,7 @@ namespace Projet2
         MoteurJeu _moteurJeu;
         MoteurReseau _moteurReseau;
         MoteurSysteme _moteurSysteme;
+        MoteurPhysique _moteurPhysique;
 
         // ============= Proivisoire ==============
 
@@ -33,7 +34,7 @@ namespace Projet2
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
 
-
+            _moteurPhysique = new MoteurPhysique();
             _moteurAudio = new MoteurAudio();
             _moteurGraphique = new MoteurGraphique();
             _moteurJeu = new MoteurJeu();
@@ -45,8 +46,8 @@ namespace Projet2
         {
             // TODO: Add your initialization logic here
 
-            _moteurGraphique.Initialize(_moteurSysteme.lireCarte(Environment.CurrentDirectory + @"\carte.txt"), _moteurJeu);
-            _moteurJeu.Initialize(_moteurSysteme.EvenementUtilisateur);
+            _moteurJeu.Initialize(_moteurSysteme, _moteurPhysique);
+            _moteurGraphique.Initialize(_moteurJeu);
 
             base.Initialize();
         }

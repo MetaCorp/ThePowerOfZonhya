@@ -114,6 +114,7 @@
     <Compile Include="MoteurAudio.cs" />
     <Compile Include="MoteurGraphique.cs" />
     <Compile Include="MoteurJeu.cs" />
+    <Compile Include="MoteurPhysique.cs" />
     <Compile Include="MoteurReseau.cs" />
     <Compile Include="MoteurSysteme.cs" />
     <Compile Include="Personnage.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteAnime.cs" />
+    <Compile Include="SpriteCarte.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
