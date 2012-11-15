@@ -104,8 +104,6 @@ namespace Projet2
                     _direction.Y = 0;
                 }
 
-                Console.WriteLine(_direction);
-
                 _position.X += _direction.X * _vitesseX * (float)_gameTime.ElapsedGameTime.TotalMilliseconds;
                 _position.Y += _direction.Y * _vitesseY * (float)_gameTime.ElapsedGameTime.TotalMilliseconds;
             }

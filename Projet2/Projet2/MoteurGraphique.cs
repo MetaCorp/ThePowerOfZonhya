@@ -19,6 +19,8 @@ namespace Projet2
         SpriteCarte _spriteCarte;
         public SpriteCarte SpriteCarte { get { return _spriteCarte; } set { _spriteCarte = value; } }
 
+        SpriteDecor _spriteDecor;
+
         InterfaceUtilisateur _interfaceUtilisateur;
 
         SpriteAnime _personnage1;
@@ -31,6 +33,7 @@ namespace Projet2
         public void Initialize(MoteurJeu _moteurJeu)
         {
             _spriteCarte = new SpriteCarte(_moteurJeu.Carte);
+            _spriteDecor = new SpriteDecor(_moteurJeu.ElementDecor);
             this._moteurJeu = _moteurJeu;
 
             _personnage1 = new SpriteAnime(_moteurJeu.Personnage1.Position, 2, 4, 100);
@@ -40,8 +43,9 @@ namespace Projet2
 
         public void LoadContent(ContentManager _content)
         {
-            _spriteCarte.LoadContent(_content, "TileSetIso","hilight");
+            _spriteCarte.LoadContent(_content, "TileSetIso", "hilight");
             _personnage1.LoadContent(_content, "brasegali");
+            _spriteDecor.LoadContent(_content, "TileSetIso");
         }
 
         public void Update(GameTime _gameTime)
@@ -53,6 +57,7 @@ namespace Projet2
         {
             _spriteCarte.Draw(_spriteBatch);
             _personnage1.Draw(_spriteBatch);
+            _spriteDecor.Draw(_spriteBatch);
         }
 
 

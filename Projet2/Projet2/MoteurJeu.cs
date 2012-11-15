@@ -20,6 +20,9 @@ namespace Projet2
         Carte _carte;
         public Carte Carte { get { return _carte; } set { _carte = value; } }
 
+        ElementDecor _elementDecor;
+        public ElementDecor ElementDecor { get { return _elementDecor; } set { _elementDecor = value; } }
+
         Personnage _personnage1;
         public Personnage Personnage1 { get { return _personnage1; } set { _personnage1 = value; } }
 
@@ -33,12 +36,15 @@ namespace Projet2
             this._moteurPhysique = _moteurPhysique;
 
             _personnage1 = new Personnage("Meta", 100, 90, 6, 3);
-            _carte = new Carte(_moteurSysteme.lireCarte(Environment.CurrentDirectory + @"\carte.txt"), 30, 30, 64, 64, 32, 16);
+            _carte = new Carte(_moteurSysteme.CarteTableau, 30, 30, 64, 64, 32, 16);
+            _elementDecor = new ElementDecor(_moteurSysteme.ElementDecorTableau);
         }
 
         public void Update(GameTime _gameTime)
         {
             _personnage1.BougerPersonnage(_moteurSysteme.EvenementUtilisateur.MouseState, _gameTime);
         }
+
+
     }
 }

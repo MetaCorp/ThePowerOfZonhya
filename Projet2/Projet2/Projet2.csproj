@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Carte.cs" />
+    <Compile Include="ElementDecor.cs" />
     <Compile Include="EvenementUtilisateur.cs" />
     <Compile Include="InterfaceUtilisateur.cs" />
     <Compile Include="MoteurAudio.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteAnime.cs" />
     <Compile Include="SpriteCarte.cs" />
+    <Compile Include="SpriteDecor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
