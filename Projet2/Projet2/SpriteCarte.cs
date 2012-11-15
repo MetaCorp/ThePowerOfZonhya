@@ -146,7 +146,7 @@ namespace Projet2
                             break;
                     }
 
-                    _spriteBatch.Draw(_textureTileSet, new Rectangle(350 + _carte.TileStepX * (x - y), _carte.TileStepY * (x + y) - 250, _carte.TileWidth, _carte.TileHeight), new Rectangle(_carte.XTile * 64, _carte.YTile * 64, 64, 64), Color.White);
+                    _spriteBatch.Draw(_textureTileSet, new Rectangle(5*64 + _carte.TileStepX * (x - y), _carte.TileStepY * (x + y) - 3*64, _carte.TileWidth, _carte.TileHeight), new Rectangle(_carte.XTile * 64, _carte.YTile * 64, 64, 64), Color.White);
 
                 }
             }

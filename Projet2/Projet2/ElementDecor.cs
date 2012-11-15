@@ -16,8 +16,6 @@ namespace Projet2
         int[,] _decorTableau;
         public int[,] DecorTableau { get { return _decorTableau; } set { _decorTableau = value; } }
 
-        int _width, _height;
-
         // provisoire
         int _nbDecor = 5;
         public int NbDecor { get { return _nbDecor; } set { _nbDecor = value; } }
