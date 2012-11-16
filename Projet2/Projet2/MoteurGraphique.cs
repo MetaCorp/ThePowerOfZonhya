@@ -14,10 +14,10 @@ namespace Projet2
     class MoteurGraphique
     {
         MoteurJeu _moteurJeu;
-        MoteurPhysique _moteurPhysique;
 
-        SpriteCarte _spriteCarte;
-        public SpriteCarte SpriteCarte { get { return _spriteCarte; } set { _spriteCarte = value; } }
+        SpriteCarte _spriteCarte1;
+
+        SpriteCarte _spriteCarte2;
 
         SpriteDecor _spriteDecor;
 
@@ -32,7 +32,9 @@ namespace Projet2
 
         public void Initialize(MoteurJeu _moteurJeu)
         {
-            _spriteCarte = new SpriteCarte(_moteurJeu.Carte);
+            _spriteCarte1 = new SpriteCarte(_moteurJeu.Carte1, 1);
+            _spriteCarte2 = new SpriteCarte(_moteurJeu.Carte2, 2);
+
             _spriteDecor = new SpriteDecor(_moteurJeu.ElementDecor);
             this._moteurJeu = _moteurJeu;
 
@@ -43,7 +45,8 @@ namespace Projet2
 
         public void LoadContent(ContentManager _content)
         {
-            _spriteCarte.LoadContent(_content, "TileSetIso", "hilight");
+            _spriteCarte1.LoadContent(_content, "TileSetIso", "hilight");
+            _spriteCarte2.LoadContent(_content, "TileSetIso", "hilight");
             _personnage1.LoadContent(_content, "brasegali");
             _spriteDecor.LoadContent(_content, "TileSetIso");
         }
@@ -55,7 +58,8 @@ namespace Projet2
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteCarte.Draw(_spriteBatch);
+            _spriteCarte1.Draw(_spriteBatch);
+            _spriteCarte2.Draw(_spriteBatch);
             _personnage1.Draw(_spriteBatch);
             _spriteDecor.Draw(_spriteBatch);
         }

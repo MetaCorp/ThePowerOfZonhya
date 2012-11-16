@@ -17,8 +17,11 @@ namespace Projet2
 
         MoteurPhysique _moteurPhysique;
 
-        Carte _carte;
-        public Carte Carte { get { return _carte; } set { _carte = value; } }
+        Carte _carte1;
+        public Carte Carte1 { get { return _carte1; } set { _carte1 = value; } }
+
+        Carte _carte2;
+        public Carte Carte2 { get { return _carte2; } set { _carte2 = value; } }
 
         ElementDecor _elementDecor;
         public ElementDecor ElementDecor { get { return _elementDecor; } set { _elementDecor = value; } }
@@ -36,7 +39,8 @@ namespace Projet2
             this._moteurPhysique = _moteurPhysique;
 
             _personnage1 = new Personnage("Meta", 100, 90, 6, 3);
-            _carte = new Carte(_moteurSysteme.CarteTableau, 30, 30, 64, 64, 32, 16);
+            _carte1 = new Carte(_moteurSysteme.CarteTableau1, _moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
+            _carte2 = new Carte(_moteurSysteme.CarteTableau2, _moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
             _elementDecor = new ElementDecor(_moteurSysteme.ElementDecorTableau);
         }
 
