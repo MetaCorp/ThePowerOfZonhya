@@ -63,7 +63,7 @@ namespace Projet2
 
                 for (int i = 0; i < 7; i++)
                 {
-                    if (_openList[0].F < _openList.[1]) // garde le f le plus petit
+                    if (_openList[0].F < _openList[1].F) // garde le f le plus petit
                         _openList.RemoveAt(1);
                     else _openList.RemoveAt(0);
                 }
@@ -75,7 +75,9 @@ namespace Projet2
 
         public float GetF(Vector2 _startPos, Vector2 _endPos, Vector2 _currentPos, float _coef) // 0 si rien 1 si mur
         {
-            return Math.Sqrt((Math.Pow(_currentPos.X - _startPos.X, 2) + Math.Pow(_currentPos.X - _startPos.X, 2))) + Math.Sqrt(Math.Pow(_endPos.X - _currentPos.X, 2) + Math.Pow(_endPos.X - _currentPos.X, 2)) + _coef * 1000;
+            return  (float) (Math.Sqrt( (double)(Math.Pow(_currentPos.X - _startPos.X, 2) + Math.Pow(_currentPos.X - _startPos.X, 2))) 
+                           + Math.Sqrt( (double)(Math.Pow(_endPos.X - _currentPos.X, 2) + Math.Pow(_endPos.X - _currentPos.X, 2))) 
+                           + _coef * 1000);
         }
 
         public int[,] SetCollisionTableau(Carte _carte1, Carte _carte2, ElementDecor _elementDecor)
