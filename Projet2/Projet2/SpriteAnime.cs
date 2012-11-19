@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Projet2
 {
+
     class SpriteAnime : Sprite
     {
         int _currentIndexX, _currentIndexY;

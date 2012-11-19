@@ -97,6 +97,7 @@ namespace Projet2
                         _xIndex = 3; _yIndex = 12; _width = 64; _height = 64*2;
                         break;
 
+         
                     case 15:
                         _xIndex = 4; _yIndex = 12; _width = 64; _height = 64;
                         break;
