@@ -27,6 +27,8 @@ namespace Projet2
 
         // ============= Proivisoire ==============
 
+        Texture2D _mouseMap;
+        Color[] _colorMouseMap;
 
         public Game1()
         {
@@ -46,7 +48,10 @@ namespace Projet2
         {
             // TODO: Add your initialization logic here
 
-            _moteurJeu.Initialize(_moteurSysteme, _moteurPhysique);
+            _colorMouseMap = new Color[64 * 32];
+            
+
+            _moteurJeu.Initialize(_moteurSysteme, _moteurPhysique, _colorMouseMap);
             _moteurGraphique.Initialize(_moteurJeu);
 
             base.Initialize();
@@ -59,6 +64,9 @@ namespace Projet2
 
             // TODO: use this.Content to load your game content here
             _moteurGraphique.LoadContent(Content);
+
+            _mouseMap = Content.Load<Texture2D>("mousemap");
+            _mouseMap.GetData<Color>(_colorMouseMap);
         }
 
         protected override void UnloadContent() { }

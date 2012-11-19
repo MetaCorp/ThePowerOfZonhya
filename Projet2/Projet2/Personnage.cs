@@ -112,7 +112,7 @@ namespace Projet2
                 _orientation = 0;
             else if (_direction.Equals(new Vector2(2, -1)))
                 _orientation = 1;
-            else if ((_direction.Equals(new Vector2(0, -1)))  || (_direction.Equals(new Vector2(0, -2))))
+            else if ((_direction.Equals(new Vector2(0, -1))) || (_direction.Equals(new Vector2(0, -2))))
                 _orientation = 2;
             else if (_direction.Equals(new Vector2(-2, -1)))
                 _orientation = 3;
@@ -120,7 +120,7 @@ namespace Projet2
                 _orientation = 4;
             else if (_direction.Equals(new Vector2(-2, 1)))
                 _orientation = 5;
-            else if ((_direction.Equals(new Vector2(0, 1)))  || (_direction.Equals(new Vector2(0, 2))))
+            else if ((_direction.Equals(new Vector2(0, 1))) || (_direction.Equals(new Vector2(0, 2))))
                 _orientation = 6;
             else if (_direction.Equals(new Vector2(2, 1)))
                 _orientation = 7;

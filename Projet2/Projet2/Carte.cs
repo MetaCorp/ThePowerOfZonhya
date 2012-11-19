@@ -31,6 +31,9 @@ namespace Projet2
         int _tileStepY;
         public int TileStepY { get { return _tileStepY; } set { _tileStepY = value; } }
 
+        Vector2 _tileHover;
+        public Vector2 TileHover { get { return _tileHover; } set { _tileHover = value; } }
+
         Char[,] _tileArray;
         public Char[,] TileArray { get { return _tileArray; } set { _tileArray = value; } }
 
@@ -40,10 +43,15 @@ namespace Projet2
         int _yTile;
         public int YTile { get { return _yTile; } set { _yTile = value; } }
 
-        public Carte(Char[,] _tileArray, int _tileTotalWidth, int _tileTotalHeight, int _tileWidth, int _tileHeight, int _tileStepX, int _tileStepY)
+        Color[] _colorMouseMap;
+        Vector2 _mouseMapPos;
+
+        public Carte(Char[,] _tileArray, Color[] _colorMouseMap, int _tileTotalWidth, int _tileTotalHeight, int _tileWidth, int _tileHeight, int _tileStepX, int _tileStepY)
         {
             this._tileTotalWidth = _tileTotalWidth;
             this._tileTotalHeight = _tileTotalHeight;
+
+            this._colorMouseMap = _colorMouseMap;
 
             this._tileArray = _tileArray;
 
@@ -53,14 +61,49 @@ namespace Projet2
             this._tileStepY = _tileStepY;
         }
 
-        public void Update(GameTime _gameTime)
+        public void Update(Vector2 _positionSouris, GameTime _gameTime)
         {
-
+            _tileHover = setTileHover(_positionSouris);
         }
 
         public Vector2 setTileHover(Vector2 _positionSouris)
         {
-            return _positionSouris;
+            Color couleur;
+
+            Vector2 _tileHoverAux;
+
+            _tileHoverAux.X = ((_positionSouris.Y / 32 + _positionSouris.X / 64) / 2) * 2;
+            _tileHoverAux.Y = ((_positionSouris.Y / 32 - _positionSouris.X / 64) / 2) * 2;
+
+            Console.WriteLine("Mouse.X : " + _positionSouris.X + " , Mouse.Y : " + _positionSouris.Y);
+
+            Console.WriteLine("TileHoverX2 : " + _tileHoverAux.X + " , TileHoverY2 : " + _tileHoverAux.Y);
+
+            _mouseMapPos.X = _positionSouris.X % 64;
+            if (_tileHover.X % 4 == 0)
+                _mouseMapPos.Y = _positionSouris.Y % 64;
+            else _mouseMapPos.Y = (_positionSouris.Y + 32) % 64;
+
+            if (_mouseMapPos.X + (_mouseMapPos.Y % 32) * 64 > 0)
+                couleur = _colorMouseMap[(int)(_mouseMapPos.X + (_mouseMapPos.Y % 32) * 64)];
+
+            //Console.WriteLine("Couleur : " + couleur);
+
+            /*if (couleur == Color.Red)
+                tileHoverX2 = tileHoverX2 - 1;
+            else if (couleur == Color.Yellow)
+                tileHoverY2 = tileHoverY2 - 1;
+            else if (couleur == Color.Blue)
+                tileHoverX2 = tileHoverX2 + 1;
+            else if (couleur == Color.Green)
+                tileHoverY2 = tileHoverY2 + 1;*/
+
+            _tileHover = _tileHoverAux;
+
+            //Console.WriteLine("Case : x = " + tileHoverX + ", y = " + tileHoverY);
+            
+
+            return _tileHover;
         }
     }
 }

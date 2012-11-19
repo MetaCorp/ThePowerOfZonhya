@@ -33,19 +33,20 @@ namespace Projet2
         {
         }
 
-        public void Initialize(MoteurSysteme _moteurSysteme, MoteurPhysique _moteurPhysique)
+        public void Initialize(MoteurSysteme _moteurSysteme, MoteurPhysique _moteurPhysique, Color[] _colorMouseMap)
         {
             this._moteurSysteme = _moteurSysteme;
             this._moteurPhysique = _moteurPhysique;
 
             _personnage1 = new Personnage("Meta", 100, 90, 6, 3);
-            _carte1 = new Carte(_moteurSysteme.CarteTableau1, _moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
-            _carte2 = new Carte(_moteurSysteme.CarteTableau2, _moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
+            _carte1 = new Carte(_moteurSysteme.CarteTableau1, _colorMouseMap, _moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
+            _carte2 = new Carte(_moteurSysteme.CarteTableau2, _colorMouseMap,_moteurSysteme.CarteTableauWidth, _moteurSysteme.CarteTableauHeight, 64, 64, 32, 16);
             _elementDecor = new ElementDecor(_moteurSysteme.ElementDecorTableau);
         }
 
         public void Update(GameTime _gameTime)
         {
+            _carte1.Update(new Vector2(_moteurSysteme.EvenementUtilisateur.MouseState.X, _moteurSysteme.EvenementUtilisateur.MouseState.Y), _gameTime);
             _personnage1.BougerPersonnage(_moteurSysteme.EvenementUtilisateur.MouseState, _gameTime);
         }
 

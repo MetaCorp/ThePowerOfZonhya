@@ -16,6 +16,7 @@ namespace Projet2
         MoteurJeu _moteurJeu;
 
         SpriteCarte _spriteCarte1;
+        public SpriteCarte SpriteCarte1 { get { return _spriteCarte1; } set { _spriteCarte1 = value; } }
 
         SpriteCarte _spriteCarte2;
 

@@ -18,7 +18,7 @@ namespace Projet2
         int _type;
 
         Texture2D _textureTileSet, _textureTileHover;
-
+       
         public SpriteCarte(Carte _carte, int _type)
         {
             this._carte = _carte;
@@ -29,6 +29,7 @@ namespace Projet2
         {
             _textureTileSet = content.Load<Texture2D>(_asset1);
             _textureTileHover = content.Load<Texture2D>(_asset2);
+
         }
 
         public void Update(GameTime _gameTime)
@@ -49,61 +50,61 @@ namespace Projet2
                             case '.':
                                 _carte.XTile = 7; _carte.YTile = 0;
                                 break;
-                            case 'A':
+                            case 'a':
                                 _carte.XTile = 0; _carte.YTile = 0;
                                 break;
-                            case 'B':
+                            case 'b':
                                 _carte.XTile = 1; _carte.YTile = 0;
                                 break;
-                            case 'C':
+                            case 'c':
                                 _carte.XTile = 2; _carte.YTile = 0;
                                 break;
-                            case 'D':
+                            case 'd':
                                 _carte.XTile = 3; _carte.YTile = 0;
                                 break;
-                            case 'E':
+                            case 'e':
                                 _carte.XTile = 4; _carte.YTile = 0;
                                 break;
-                            case 'F':
+                            case 'f':
                                 _carte.XTile = 5; _carte.YTile = 0;
                                 break;
-                            case 'G':
+                            case 'g':
                                 _carte.XTile = 6; _carte.YTile = 0;
                                 break;
-                            case 'H':
+                            case 'h':
                                 _carte.XTile = 0; _carte.YTile = 1;
                                 break;
-                            case 'I':
+                            case 'i':
                                 _carte.XTile = 1; _carte.YTile = 1;
                                 break;
-                            case 'J':
+                            case 'j':
                                 _carte.XTile = 2; _carte.YTile = 1;
                                 break;
-                            case 'K':
+                            case 'k':
                                 _carte.XTile = 3; _carte.YTile = 1;
                                 break;
-                            case 'L':
+                            case 'l':
                                 _carte.XTile = 4; _carte.YTile = 1;
                                 break;
-                            case 'M':
+                            case 'm':
                                 _carte.XTile = 5; _carte.YTile = 1;
                                 break;
-                            case 'N':
+                            case 'n':
                                 _carte.XTile = 6; _carte.YTile = 1;
                                 break;
-                            case 'O':
+                            case 'o':
                                 _carte.XTile = 7; _carte.YTile = 1;
                                 break;
-                            case 'P':
+                            case 'p':
                                 _carte.XTile = 0; _carte.YTile = 2;
                                 break;
-                            case 'Q':
+                            case 'q':
                                 _carte.XTile = 1; _carte.YTile = 2;
                                 break;
-                            case 'R':
+                            case 'r':
                                 _carte.XTile = 2; _carte.YTile = 2;
                                 break;
-                            case 'S':
+                            case 's':
                                 _carte.XTile = 3; _carte.YTile = 2;
                                 break;
                             case 'T':
@@ -262,9 +263,11 @@ namespace Projet2
                         }
 
 
-                                _spriteBatch.Draw(_textureTileSet, new Rectangle(5 * 64 + 32 + _carte.TileStepX * (x - y), _carte.TileStepY * (x + y) - 2 * 64, _carte.TileWidth, _carte.TileHeight), new Rectangle(_carte.XTile * 64, _carte.YTile * 64, 64, 64), Color.White);
+                                _spriteBatch.Draw(_textureTileSet, new Rectangle( _carte.TileStepX * (x - y), _carte.TileStepY * (x + y), _carte.TileWidth, _carte.TileHeight), new Rectangle(_carte.XTile * 64, _carte.YTile * 64, 64, 64), Color.White);
                         
                 }
+
+                _spriteBatch.Draw(_textureTileHover, new Rectangle(_carte.TileStepX * ((int)_carte.TileHover.X - (int)_carte.TileHover.Y), _carte.TileStepY * ((int)_carte.TileHover.X + (int)_carte.TileHover.Y), 64, 32), Color.White);
             }
 
         }
